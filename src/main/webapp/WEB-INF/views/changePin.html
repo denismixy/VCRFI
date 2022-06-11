@@ -24,6 +24,8 @@
         document.getElementById("encryptedPin").value = encryptedPin
         var encryptedPan = encrypt.encrypt(document.getElementById("enteredPan").value);
         document.getElementById("encryptedPan").value = encryptedPan
+        document.getElementById("enteredPin").value = ""
+        document.getElementById("enteredPan").value = ""
         form.submit()
     })
 </script>
