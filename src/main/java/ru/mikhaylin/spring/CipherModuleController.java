@@ -19,8 +19,9 @@ public class CipherModuleController {
     }
 
     @GetMapping("/processingPinChange")
-    public String processingPinChange(@RequestParam(name = "encryptedPin") String encryptedPin, Model model) {
-        String result = CipherModule.processingChangePin(encryptedPin);
+    public String processingPinChange(@RequestParam(name = "encryptedPin") String encryptedPin,
+                                      @RequestParam(name = "encryptedPan") String encryptedPan, Model model) {
+        String result = CipherModule.processingChangePin(encryptedPin, encryptedPan);
         if (result.equals("Successful")) {
             return "successful";
         } else {

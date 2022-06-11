@@ -25,10 +25,12 @@ public class CipherProcessor {
         }
     }
 
-    public String processingChangePin(String encryptedPin) {
+    public String processingChangePin(String encryptedPin, String encryptedPan) {
         String decryptedPin = null;
+        String decryptedPan = null;
         try {
             decryptedPin = rsa.decrypt(encryptedPin);
+            decryptedPan = rsa.decrypt(encryptedPan);
         } catch (Exception exception) {
             return "Exception";
         }

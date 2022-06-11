@@ -5,6 +5,10 @@
 </head>
 <body>
 <form id="pinForm" name="pinData" method="get" action="/processingPinChange">
+    <h2>Введите карту</h2>
+    <input id="enteredPan" type="text" name="enteredPan" size="40">
+    <input id="encryptedPan" type="hidden" name="encryptedPan" value="">
+    <h2>Введите пин-код</h2>
     <input id="enteredPin" type="text" name="enteredPin" size="40">
     <input id="encryptedPin" type="hidden" name="encryptedPin" value="">
     <input type="submit" name="pinButton" value="Сменить пин"/>
@@ -16,8 +20,10 @@
         event.preventDefault()
         var encrypt = new JSEncrypt();
         encrypt.setPublicKey(/*[[${publicKey}]]*/);
-        var encrypted = encrypt.encrypt(document.getElementById("enteredPin").value);
-        document.getElementById("encryptedPin").value = encrypted
+        var encryptedPin = encrypt.encrypt(document.getElementById("enteredPin").value);
+        document.getElementById("encryptedPin").value = encryptedPin
+        var encryptedPan = encrypt.encrypt(document.getElementById("enteredPan").value);
+        document.getElementById("encryptedPan").value = encryptedPan
         form.submit()
     })
 </script>
