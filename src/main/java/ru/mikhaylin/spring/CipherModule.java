@@ -22,8 +22,8 @@ public class CipherModule {
         return "false";
     }
 
-    public static String getPublicKey() {
-        return cipherProcessor.getPublicKey();
+    public static String getPublicKeyString() {
+        return cipherProcessor.getPublicKeyString();
     }
 
     public static void setCipherProcessor(CipherProcessor settableCipherProcessor) {

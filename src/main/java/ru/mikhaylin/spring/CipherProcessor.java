@@ -34,7 +34,7 @@ public class CipherProcessor {
         return Map.ofEntries(entry("decryptedPin", decryptedPin), entry("decryptedPan", decryptedPan));
     }
 
-    public String getPublicKey() {
+    public String getPublicKeyString() {
         return rsa.getPublicKeyString();
     }
 }

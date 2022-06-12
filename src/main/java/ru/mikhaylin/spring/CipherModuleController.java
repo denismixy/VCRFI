@@ -13,7 +13,7 @@ public class CipherModuleController {
     @GetMapping("/changePin")
     public String changePin(Model model) {
         Configure.load();
-        String publicKey = CipherModule.getPublicKey();
+        String publicKey = CipherModule.getPublicKeyString();
         model.addAttribute("publicKey", publicKey);
         return "changePin";
     }
