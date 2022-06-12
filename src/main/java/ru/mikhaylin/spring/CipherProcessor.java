@@ -1,8 +1,9 @@
 package ru.mikhaylin.spring;
 
 import java.security.NoSuchAlgorithmException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Map;
+
+import static java.util.Map.entry;
 
 public class CipherProcessor {
     private static RSA rsa;
@@ -25,21 +26,12 @@ public class CipherProcessor {
         }
     }
 
-    public String processingChangePin(String encryptedPin, String encryptedPan) {
+    public Map<String, String> decryptData(String encryptedPin, String encryptedPan) throws Exception {
         String decryptedPin = null;
         String decryptedPan = null;
-        try {
-            decryptedPin = rsa.decrypt(encryptedPin);
-            decryptedPan = rsa.decrypt(encryptedPan);
-        } catch (Exception exception) {
-            return "Exception";
-        }
-        Pattern pattern = Pattern.compile("^\\d{4}$");
-        Matcher matcher = pattern.matcher(decryptedPin);
-        if (matcher.find()) {
-            return "Successful";
-        }
-        return "Exception";
+        decryptedPin = rsa.decrypt(encryptedPin);
+        decryptedPan = rsa.decrypt(encryptedPan);
+        return Map.ofEntries(entry("decryptedPin", decryptedPin), entry("decryptedPan", decryptedPan));
     }
 
     public String getPublicKey() {
