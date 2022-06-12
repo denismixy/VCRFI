@@ -15,7 +15,7 @@ public class CipherProcessor {
         if (cipherProcessor == null) {
             rsa = new RSA();
             try {
-                rsa.init();
+                rsa.initialize();
             } catch (NoSuchAlgorithmException ignored) {
 
             }
