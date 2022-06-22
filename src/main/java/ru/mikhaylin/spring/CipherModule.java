@@ -12,14 +12,18 @@ public class CipherModule {
         try {
             map = cipherProcessor.decryptData(encryptedPin, encryptedPan);
         } catch (Exception e) {
-            return "false";
+            return "500";
         }
         Pattern pattern = Pattern.compile("^\\d{4}$");
         Matcher matcher = pattern.matcher(map.get("decryptedPin"));
-        if (matcher.find()) {
-            return "Successful";
+        if (!matcher.find()) {
+            return "500";
         }
-        return "false";
+        if (ProcessingClient.processingPinChange(map.get("decryptedPin"), map.get("decryptedPan")).equals("200")) {
+            return "200";
+        } else {
+            return "500";
+        }
     }
 
     public static String getPublicKeyString() {

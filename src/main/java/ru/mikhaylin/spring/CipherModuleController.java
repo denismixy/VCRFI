@@ -3,8 +3,6 @@ package ru.mikhaylin.spring;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -22,7 +20,7 @@ public class CipherModuleController {
     public String processingPinChange(@RequestParam(name = "encryptedPin") String encryptedPin,
                                       @RequestParam(name = "encryptedPan") String encryptedPan, Model model) {
         String pinChangeResult = CipherModule.processingChangePin(encryptedPin, encryptedPan);
-        if (pinChangeResult.equals("Successful")) {
+        if (pinChangeResult.equals("200")) {
             return "successful";
         } else {
             return "failed";
